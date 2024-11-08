@@ -12,6 +12,7 @@ cd "$WORKING_DIR" || exit
 ARGS=(
   "$@"
    --config "$CONFIG_ABS_PATH"
+   --no-colors=true
 )
 
 # 'check' sub-command doesn't require credentials
