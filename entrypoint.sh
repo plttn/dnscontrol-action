@@ -10,9 +10,9 @@ WORKING_DIR="$(dirname "${CONFIG_ABS_PATH}")"
 cd "$WORKING_DIR" || exit
 
 ARGS=(
+   --no-colors=true
   "$@"
    --config "$CONFIG_ABS_PATH"
-   --no-colors=true
 )
 
 # 'check' sub-command doesn't require credentials
