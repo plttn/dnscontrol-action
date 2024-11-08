@@ -15,7 +15,7 @@ RUN apk -U --no-cache upgrade && \
     apk add --no-cache bash ca-certificates curl libc6-compat tar
 
 RUN curl -sL "https://github.com/StackExchange/dnscontrol/releases/download/v4.14.3/dnscontrol_4.14.3_linux_amd64.tar.gz" \
-  -o dnscontrol.tar.gz && tar -xzvf dnscontrol.tar.gz -C dnscontrol-folder \
+  -o dnscontrol.tar.gz && tar -xzvf dnscontrol.tar.gz -C dnscontrol-folder && \
   # echo "$DNSCONTROL_CHECKSUM  dnscontrol" | sha256sum -c - && \
   chmod +x dnscontrol-folder/dnscontrol && \
   mv dnscontrol-folder/dnscontrol /usr/local/bin/dnscontrol
