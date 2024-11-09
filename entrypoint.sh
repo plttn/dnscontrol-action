@@ -10,7 +10,6 @@ WORKING_DIR="$(dirname "${CONFIG_ABS_PATH}")"
 cd "$WORKING_DIR" || exit
 
 ARGS=(
-  #  --no-colors=true
   "$@"
    --config "$CONFIG_ABS_PATH"
 )
@@ -18,6 +17,7 @@ ARGS=(
 # 'check' sub-command doesn't require credentials
 if [ "$1" != "check" ]; then
     ARGS+=(--creds "$CREDS_ABS_PATH")
+    args+=(--cmode concurrent)
 fi
 
 IFS=

@@ -7,4 +7,5 @@ grep -v -e '^\.\.\.0 corrections$' |\
   grep -v -e '^----- DNS Provider: ' |\
   grep -v -e '^----- Registrar: ' |\
   grep -v -e '^----- Getting nameservers from:' | \
-  sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g"
+  sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" # remove ANSI color codes
+  ## https://stackoverflow.com/questions/17998978/removing-colors-from-output
