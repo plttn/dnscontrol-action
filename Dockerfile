@@ -1,4 +1,4 @@
-FROM alpine:3.17.2@sha256:69665d02cb32192e52e07644d76bc6f25abeb5410edc1c7a81a10ba3f0efb90a
+FROM alpine:3.20.3
 
 LABEL repository="https://github.com/koenrh/dnscontrol-action"
 LABEL maintainer="Koen Rouwhorst <info@koenrouwhorst.nl>"
@@ -14,11 +14,11 @@ ENV DNSCONTROL_CHECKSUM="8c7e8a181beb17b130a6365bc81ffd024176951b5082d5153941219
 RUN apk -U --no-cache upgrade && \
     apk add --no-cache bash ca-certificates curl libc6-compat tar
 
-RUN mkdir ./dnscontrol-folder && \
-  curl -sL "https://github.com/StackExchange/dnscontrol/releases/download/v4.14.3/dnscontrol_4.14.3_linux_amd64.tar.gz" \
-  -o dnscontrol.tar.gz && tar -xzvf dnscontrol.tar.gz -C ./dnscontrol-folder && \
-  chmod +x ./dnscontrol-folder/dnscontrol && \
-  mv ./dnscontrol-folder/dnscontrol /usr/local/bin/dnscontrol
+RUN curl -sL "https://github.com/StackExchange/dnscontrol/releases/download/v${DNSCONTROL_VERSION}/dnscontrol_${DNSCONTROL_VERSION}_linux_amd64.tar.gz" -o dnscontrol.tar.gz && \
+  echo "$DNSCONTROL_CHECKSUM  dnscontrol.tar.gz" | sha256sum -c - && \
+  tar -xzf "dnscontrol.tar.gz" && \
+  chmod +x dnscontrol && \
+  mv dnscontrol /usr/local/bin/dnscontrol
 
 RUN ["dnscontrol", "version"]
 

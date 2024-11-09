@@ -10,7 +10,7 @@ WORKING_DIR="$(dirname "${CONFIG_ABS_PATH}")"
 cd "$WORKING_DIR" || exit
 
 ARGS=(
-   --no-colors=true
+  #  --no-colors=true
   "$@"
    --config "$CONFIG_ABS_PATH"
 )
