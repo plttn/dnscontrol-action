@@ -17,7 +17,7 @@ ARGS=(
 # 'check' sub-command doesn't require credentials
 if [ "$1" != "check" ]; then
     ARGS+=(--creds "$CREDS_ABS_PATH")
-    args+=(--cmode concurrent)
+    ARGS+=(--cmode concurrent)
 fi
 
 IFS=
